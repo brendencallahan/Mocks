@@ -9,7 +9,7 @@ This was an assignment for Harvard's Intro to Computer Science course. The only 
 
 ### Stored login info using SQLite
 
-Using Flask and SQLite3 I stored the salted hash instead of the user's password. I also stored the user's name for obvious reasons. :)
+Using Flask and SQLite3 I stored the salted hash instead of the user's password. I also stored the username for obvious reasons. :)
 
 
 ![Screenshot 2022-08-02 104037](https://user-images.githubusercontent.com/47364240/182441788-b8e3b82c-155c-4367-a174-2d87b1a71bf5.png)

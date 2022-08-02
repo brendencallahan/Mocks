@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Symbol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td id="name">{{name}}</td>
+        <td id="price">{{price}}</td>
+        <td id="symbol">{{symbol}}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

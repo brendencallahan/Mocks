@@ -11,9 +11,19 @@ This was an assignment for Harvard's Intro to Computer Science course. The only 
 
 Using Flask and SQLite3 I stored the salted hash instead of the user's password. I also stored the user's name for obvious reasons. :)
 
+
+![Screenshot 2022-08-02 104037](https://user-images.githubusercontent.com/47364240/182441788-b8e3b82c-155c-4367-a174-2d87b1a71bf5.png)
+
+
+![Screenshot 2022-08-02 105407](https://user-images.githubusercontent.com/47364240/182441626-6c227fe4-b1f1-4233-bfa4-df3ca72afe7f.png)
+
+
 ### Implemented lookup feature
 
 Added ability to see a company's current share price by looking up their symbol (i.e NFLX for Netflix) using IEX's API then displayed this JSON data using a table and the Jinja templating language.
+
+
+![Screenshot 2022-08-02 104020](https://user-images.githubusercontent.com/47364240/182441836-7d575e47-5e3b-4b41-a9f3-b4bf31937002.png)
 
 
 ### Wrote buy/sell functionality

@@ -65,8 +65,17 @@ def buy():
     if not stock_info:
         return apology("must enter valid Symbol", 403)
 
+    cash_dict = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]
+    cash = cash_dict["cash"]
 
+    price = stock_info["price"]
 
+    if (cash - price) > 0:
+        cash = cash - price
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, session["user_id"])
+        db.execute("")
+    else:
+        return apology("not enough money for this purchase", 403)
     return render_template("buy.html")
 
 @app.route("/history")

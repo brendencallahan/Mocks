@@ -5,6 +5,7 @@
 
 This was an assignment for Harvard's Intro to Computer Science course. The only provided code was Bootstrap for the nav bar as well as several small functions. Everything else was written by me in Python using Flask and SQLite.
 
+
 ## What I did:
 
 ### Stored login info using SQLite
@@ -23,16 +24,46 @@ Using Flask and SQLite3 I stored the salted hash instead of the user's password.
 Added ability to see a company's current share price by looking up their symbol (i.e NFLX for Netflix) using IEX's API then displayed this JSON data using a table and the Jinja templating language.
 
 
-![Screenshot 2022-08-02 104020](https://user-images.githubusercontent.com/47364240/182441836-7d575e47-5e3b-4b41-a9f3-b4bf31937002.png)
+![Screenshot 2022-08-12 161008](https://user-images.githubusercontent.com/47364240/184456194-7af366b5-4bf0-4548-92ec-b821b9f89fb2.png)
+
 
 
 ### Wrote buy/sell functionality
 
 Also added ability to buy and sell desired number of shares for any given symbol at current market price using IEX's API. 
 
-### Allowed users to see all current holdings/balances
+
+![Screenshot 2022-08-12 161030](https://user-images.githubusercontent.com/47364240/184456220-14c50bd8-1042-475c-99b0-7a8ee4bc0f4b.png)
+
+![Screenshot 2022-08-12 161118](https://user-images.githubusercontent.com/47364240/184456225-5b162262-760e-440c-a7ed-08faebf8c96d.png)
+
+
+### Allowed users to see a breakdown of their portfolio
 
 Added main 'hub' that lets user's see the current price of all their shares as well as their current account balance. 
+
+
+![Screenshot 2022-08-12 161050](https://user-images.githubusercontent.com/47364240/184456231-0daada41-0f98-467b-8da7-19a86f66f99e.png)
+
+
+### Implemented a history page where users can see all previous transactions
+
+
+## To run locally:
+
+``` 
+git clone https://github.com/brendencallahan/Mocks
+```
+```
+pip3 install cs50 flask flask_sessions
+```
+```
+export API_KEY=xxxxxxxxxxxxxxxxxxxxxxx
+```
+```
+flask run
+```
+
 
 (Visit assignment page here, no login required) https://cs50.harvard.edu/x/2022/psets/9/finance/
 

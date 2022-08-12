@@ -5,8 +5,9 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import date
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required, lookup, usd, getCash, adjustPortfolio, goHome
 
 # Configure application
 app = Flask(__name__)
@@ -43,46 +44,48 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("TODO")
 
+    return goHome()
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
     """Buy shares of stock"""
-
     if request.method == "GET":
         return render_template("buy.html")
 
-    #Check for valid input (with lookup)
+    # Get user request
     stock_name = request.form.get("stock_name")
-    shares_wanted = request.form.get("shares_wanted")
+    try:
+        shares_wanted = float(request.form.get("shares_wanted"))
+    except (KeyError, TypeError, ValueError):
+        return apology("must enter number of shares", 403)
+    # Ensure purchase info is valid
+    if not stock_name or shares_wanted <= 0:
+        return apology("must enter valid purchase", 403)
 
-    if not stock_name or not shares_wanted:
-        return apology("must enter valid Symbol", 403)
+    if not request.form.get("stock_name"):
+        return apology("must enter name", 403)
 
+    # Lookup clients requested stock
     stock_info = lookup(stock_name)
+
+    # Check for valid symbol
     if not stock_info:
-        return apology("must enter valid Symbol", 403)
+        return apology("must enter valid symbol", 403)
 
-    cash_dict = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]
-    cash = cash_dict["cash"]
+    symbol = stock_info["symbol"]
 
-    price = stock_info["price"]
-
-    if (cash - price) > 0:
-        cash = cash - price
-        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, session["user_id"])
-        db.execute("")
-    else:
-        return apology("not enough money for this purchase", 403)
-    return render_template("buy.html")
+    return adjustPortfolio(session["user_id"], symbol, shares_wanted)
 
 @app.route("/history")
 @login_required
 def history():
     """Show history of transactions"""
-    return apology("TODO")
+
+    purchase_history = db.execute("SELECT date, purchase_id, symbol, shares, price, total_price FROM purchase_history WHERE id = ?", session["user_id"])
+
+    return render_template("history.html", purchase_history=purchase_history)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -97,11 +100,11 @@ def login():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return apology("must enter username", 403)
+            return apology("must provide username", 403)
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return apology("must enter password", 403)
+            return apology("must provide password", 403)
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
@@ -159,7 +162,6 @@ def quote():
     symbol = stock_info["symbol"]
     return render_template("quoted.html", name=name, price=price, symbol=symbol)
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user with encrpyted password"""
@@ -182,9 +184,38 @@ def register():
 
     return render_template("login.html")
 
-
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+
+    symbols = db.execute("SELECT symbol FROM portfolio WHERE id = ?", session["user_id"])
+
+    if request.method == "GET":
+        return render_template("sell.html", symbols=symbols)
+
+    # Get user request
+    stock_name = request.form.get("stock_name")
+    try:
+        shares_wanted = float(request.form.get("shares_wanted"))
+    except (KeyError, TypeError, ValueError):
+        return apology("must enter number of shares", 403)
+    # Ensure purchase info is valid
+    if not stock_name or shares_wanted <= 0:
+        return apology("must enter valid purchase", 403)
+
+    if not request.form.get("stock_name"):
+        return apology("must enter name", 403)
+
+    # Lookup clients requested stock
+    stock_info = lookup(stock_name)
+
+    # Check for valid symbol
+    if not stock_info:
+        return apology("must enter valid symbol", 403)
+
+    symbol = stock_info["symbol"]
+
+    shares_wanted = shares_wanted * -1
+
+    return adjustPortfolio(session["user_id"], symbol, shares_wanted)

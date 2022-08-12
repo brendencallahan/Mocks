@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th></th>
+        <th scope="col">Shares</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in portfolio %}
+      <tr>
+        <td id="symbol">{{line.symbol}}</td>
+        <td></td>
+        <td id="shares">{{line.shares}}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td id="total" scope="row"><strong>Total Cash</strong><td>
+        <td id="cash">{{cash | usd}}</td>
+      </tr>
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Purchase ID</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price Per Share</th>
+        <th scope="col">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in purchase_history %}
+      <tr>
+        <td id="symbol">{{line.date}}</td>
+        <td id="shares">{{line.purchase_id}}</td>
+        <td id="shares">{{line.symbol}}</td>
+        <td id="shares">{{line.shares}}</td>
+        <td id="shares">{{line.price}}</td>
+        <td id="shares">{{line.total_price}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

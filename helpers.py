@@ -105,6 +105,9 @@ def adjustPortfolio(userid, symbol, shares_wanted):
         total_price_setCash = round(price * shares_wanted * -1, 2)
 
 
+    # Insert into puchase history table on fincance database
+    db.execute("INSERT INTO purchase_history (id, date, symbol, shares, price, total_price) VALUES (?, ?, ?, ?, ?, ?)", userid, date_today, symbol, shares_wanted, price, total_price)
+
 
     try:
         shares_owned = db.execute("SELECT shares FROM portfolio WHERE symbol = ?", symbol)[0]["shares"]
@@ -124,9 +127,6 @@ def adjustPortfolio(userid, symbol, shares_wanted):
         shares = shares_owned + shares_wanted
         db.execute("UPDATE portfolio SET shares = ? WHERE symbol = ? AND id = ?", shares, symbol, userid)
         setCash(cash, total_price_setCash, userid)
-
-    # Insert into puchase history table on fincance database
-    db.execute("INSERT INTO purchase_history (id, date, symbol, shares, price, total_price) VALUES (?, ?, ?, ?, ?, ?)", userid, date_today, symbol, shares_wanted, price, total_price)
 
     return goHome()
 

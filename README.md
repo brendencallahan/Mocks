@@ -58,16 +58,16 @@ Added main 'hub' that lets users see the current price of all their shares as we
 ## To run locally:
 
 ``` 
-git clone https://github.com/brendencallahan/Mocks
+$ git clone https://github.com/brendencallahan/Mocks
 ```
 ```
-pip3 install cs50 flask flask_sessions
+$ pip3 install cs50 flask flask_sessions
 ```
 ```
-export API_KEY=xxxxxxxxxxxxxxxxxxxxxxx
+$ export API_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 ```
 ```
-flask run
+$ flask run
 ```
 
 

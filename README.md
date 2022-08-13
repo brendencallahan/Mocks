@@ -2,9 +2,9 @@
 
 
 # Mocks
-## (Mock Stocks, "Where everythings made up and the points don't matter"*)
+## (Mock Stocks, "Where everything's made up and the points don't matter"*)
 
-### Lookup, buy, and sell stocks with functioning login written in Flask.
+### Look-up, buy, and sell stocks with functioning login written in Flask.
 
 This was an assignment for Harvard's Intro to Computer Science course. The only provided code was Bootstrap for the nav bar as well as several small functions. Everything else was written by me in Python using Flask and SQLite.
 
@@ -22,7 +22,7 @@ Using Flask and SQLite3 I stored the salted hash instead of the user's password.
 ![Screenshot 2022-08-02 105407](https://user-images.githubusercontent.com/47364240/182441626-6c227fe4-b1f1-4233-bfa4-df3ca72afe7f.png)
 
 
-### Implemented lookup feature
+### Implemented look-up feature
 
 Added ability to see a company's current share price by looking up their symbol (i.e NFLX for Netflix) using IEX's API then displayed this JSON data using a table and the Jinja templating language.
 
@@ -43,13 +43,16 @@ Also added ability to buy and sell desired number of shares for any given symbol
 
 ### Allowed users to see a breakdown of their portfolio
 
-Added main 'hub' that lets user's see the current price of all their shares as well as their current account balance. 
+Added main 'hub' that lets users see the current price of all their shares as well as their current account balance. 
 
 
 ![Screenshot 2022-08-12 161050](https://user-images.githubusercontent.com/47364240/184456231-0daada41-0f98-467b-8da7-19a86f66f99e.png)
 
 
 ### Implemented a history page where users can see all previous transactions
+
+
+![Screenshot 2022-08-12 190328](https://user-images.githubusercontent.com/47364240/184464434-689a915d-6d80-4b51-bea6-aa27c691d33a.png)
 
 
 ## To run locally:
@@ -71,4 +74,4 @@ flask run
 (Visit assignment page here, no login required) https://cs50.harvard.edu/x/2022/psets/9/finance/
 
 
-* The money used in this is fake. You start with $10,000 fake USD when you register. There is no way to earn more money or anything like that. :)
+* The money used in this is fake. You start with $10,000 fake USD when you register. :)

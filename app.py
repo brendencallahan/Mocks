@@ -27,7 +27,7 @@ Session(app)
 db = SQL("sqlite:///finance.db")
 
 # Make sure API key is set
-appConfig.config["API_KEY"] = pk_8f139b8ee17402d92afd4ebd89481e3
+appConfig.config["API_KEY"] = "pk_8f139b8ee17402d92afd4ebd89481e3"
 
 @app.after_request
 def after_request(response):

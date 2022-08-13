@@ -27,9 +27,7 @@ Session(app)
 db = SQL("sqlite:///finance.db")
 
 # Make sure API key is set
-if not os.environ.get("API_KEY"):
-    raise RuntimeError("API_KEY not set")
-
+appConfig.config["API_KEY"] = pk_8f139b8ee17402d92afd4ebd89481e3
 
 @app.after_request
 def after_request(response):

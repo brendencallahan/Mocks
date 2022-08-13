@@ -23,8 +23,8 @@
         <td id="shares">{{line.purchase_id}}</td>
         <td id="shares">{{line.symbol}}</td>
         <td id="shares">{{line.shares}}</td>
-        <td id="shares">{{line.price}}</td>
-        <td id="shares">{{line.total_price}}</td>
+        <td id="shares">{{line.price | usd}}</td>
+        <td id="shares">{{line.total_price | usd}}</td>
       </tr>
       {% endfor %}
     </tbody>

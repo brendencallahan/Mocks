@@ -114,6 +114,7 @@ def adjustPortfolio(userid, symbol, shares_wanted):
     except (KeyError, TypeError, ValueError, IndexError):
         db.execute("INSERT INTO portfolio (id, symbol, shares) VALUES (?, ?, ?)", userid, symbol, shares_wanted)
         setCash(cash, total_price_setCash, userid)
+        return goHome()
 
     if shares_owned <= 0:
         db.execute("DELETE FROM portfolio WHERE symbol = ?", symbol)
@@ -127,6 +128,7 @@ def adjustPortfolio(userid, symbol, shares_wanted):
         shares = shares_owned + shares_wanted
         db.execute("UPDATE portfolio SET shares = ? WHERE symbol = ? AND id = ?", shares, symbol, userid)
         setCash(cash, total_price_setCash, userid)
+        return goHome()
 
     return goHome()
 

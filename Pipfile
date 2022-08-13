@@ -21,6 +21,8 @@ termcolor = "==1.1.0"
 werkzeug = "==2.2.2"
 zipp = "==3.8.1"
 flask-sessions = "*"
+requests = "*"
+responses = "*"
 
 [dev-packages]
 

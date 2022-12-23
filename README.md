@@ -1,6 +1,3 @@
-## https://mocks-cs50.herokuapp.com/
-
-
 # Mocks
 ## (Mock Stocks, "Where everything's made up and the points don't matter"*)
 

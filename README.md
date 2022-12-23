@@ -72,4 +72,4 @@ $ flask run
 (Visit assignment page here, no login required) https://cs50.harvard.edu/x/2022/psets/9/finance/
 
 
-* The money used in this is fake. You start with $10,000 fake USD when you register. :)
+* The money used in this is not real. You start with $10,000 fake USD when you register. :)

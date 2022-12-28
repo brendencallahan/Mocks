@@ -1,5 +1,12 @@
 # Mocks
 ## https://mocks.up.railway.app
+### To test
+### username: test
+### password: 123
+
+(Data may not persist if server provider restarts)
+
+
 ## (Mock Stocks, "Where everything's made up and the points don't matter")
 
 ### Look-up, buy, and sell stocks with functioning login written in Flask.

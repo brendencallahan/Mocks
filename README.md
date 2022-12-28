@@ -1,5 +1,5 @@
 # Mocks
-## * Live site is temporarily down, while I migrate from Heroku.
+## https://mocks.up.railway.app
 ## (Mock Stocks, "Where everything's made up and the points don't matter")
 
 ### Look-up, buy, and sell stocks with functioning login written in Flask.

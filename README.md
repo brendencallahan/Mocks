@@ -11,7 +11,7 @@
 
 ### Look-up, buy, and sell stocks with functioning login written in Flask.
 
-This was an assignment for Harvard's Intro to Computer Science course. It uses fake money but real data. The only provided code was Bootstrap for the nav bar as well as several small functions. Everything else was written by me in Python using Flask and SQLite.
+This was an assignment for Harvard's Intro to Computer Science course. It uses fake money but real data. The only provided code was Bootstrap for the nav bar as well as several small functions. Everything else was written by me in Python.
 
 
 ## What I did:
